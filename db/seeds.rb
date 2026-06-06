@@ -1,9 +1,17 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb for create categories and tasks
+
+puts "######### Cleaning database ######### "
+Todo.destroy_all
+Category.destroy_all
+
+puts "Creting records for 'Category'..."
+work = Category.create!(name: "Work")
+home = Category.create!(name: "Home")
+studies = Category.create!(name: "Studies")
+
+puts "Creating record for 'Todo'..."
+task1 = Todo.create!(title: "Go to the supermarket", completed: false, category: home)
+task2 = Todo.create!(title: "Clean my bedroom", completed: false, category: home)
+task3 = Todo.create!(title: "Study for Calculus exam", completed: false, category: studies)
+task4 = Todo.create!(title: "Finish bank module", completed: true, category: work)
+task5 = Todo.create!(title: "Make power BI dashboard", completed: false, category: work)
