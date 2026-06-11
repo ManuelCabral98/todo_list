@@ -1,0 +1,711 @@
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (375.0ms)[0m  [1m[35mCREATE DATABASE "todo_list_development" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (113.9ms)[0m  [1m[35mCREATE DATABASE "todo_list_test" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35m (24.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='TodoList'*/[0m
+  [1m[35m (19.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TodoList'*/[0m
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5124218688819698475) /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.1ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (7.0ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-06-04 12:36:53.060092', '2026-06-04 12:36:53.060097') RETURNING "key" /*application='TodoList'*/[0m
+Migrating to CreateTodos (20260604122539)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[35m (23.7ms)[0m  [1m[35mCREATE TABLE "todos" ("id" bigserial primary key, "title" character varying, "completed" boolean, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f62017ee1e"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+) /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK /*application='TodoList'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5124218688819698475) /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (68.9ms)[0m  [1m[35mDROP DATABASE IF EXISTS "todo_list_development" /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (65.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "todo_list_test" /*application='TodoList'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (99.3ms)[0m  [1m[35mCREATE DATABASE "todo_list_development" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (94.2ms)[0m  [1m[35mCREATE DATABASE "todo_list_test" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35m (7.9ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='TodoList'*/[0m
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TodoList'*/[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5124218688819698475) /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-06-04 12:39:01.784805', '2026-06-04 12:39:01.784811') RETURNING "key" /*application='TodoList'*/[0m
+Migrating to CreateTodos (20260604122539)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE "todos" ("id" bigserial primary key, "title" character varying, "completed" boolean, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f62017ee1e"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+) /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[31mROLLBACK /*application='TodoList'*/[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(5124218688819698475) /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (271.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "todo_list_development" /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (63.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "todo_list_test" /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (99.5ms)[0m  [1m[35mCREATE DATABASE "todo_list_development" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (95.7ms)[0m  [1m[35mCREATE DATABASE "todo_list_test" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (28.9ms)[0m  [1m[35mCREATE DATABASE "todo_list_development" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35m (21.6ms)[0m  [1m[35mCREATE DATABASE "todo_list_test" ENCODING = 'unicode' /*application='TodoList'*/[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY) /*application='TodoList'*/[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TodoList'*/[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5124218688819698475) /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT * FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = 'environment' ORDER BY "ar_internal_metadata"."key" ASC LIMIT 1 /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::InternalMetadata Create (1.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ('environment', 'development', '2026-06-04 12:42:21.574939', '2026-06-04 12:42:21.574945') RETURNING "key" /*application='TodoList'*/[0m
+Migrating to CreateCategories (20260604124140)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[35m (10.7ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL) /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260604124140') RETURNING "version" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+Migrating to CreateTodos (20260604124147)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE TABLE "todos" ("id" bigserial primary key, "title" character varying, "completed" boolean, "category_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_f62017ee1e"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+) /*application='TodoList'*/[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE INDEX "index_todos_on_category_id" ON "todos" ("category_id") /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ('20260604124147') RETURNING "version" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(5124218688819698475) /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO "$user", public /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO public /*application='TodoList'*/[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[35mSET search_path TO "$user", public /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Trabajo', '2026-06-06 23:35:09.163729', '2026-06-06 23:35:09.163729') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.9ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Terminar desarrollo de rails', FALSE, 1, '2026-06-06 23:36:47.989762', '2026-06-06 23:36:47.989762') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTodo Load (0.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 1 /* loading for pp */ LIMIT 11 /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mTodo Load (1.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Destroy (4.0ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 1 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Load (3.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 1 /*application='TodoList'*/[0m
+  [1m[36mCategory Destroy (1.0ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = 1 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (4.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Work', '2026-06-06 23:48:05.777906', '2026-06-06 23:48:05.777906') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Home', '2026-06-06 23:48:05.791068', '2026-06-06 23:48:05.791068') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.1ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Studies', '2026-06-06 23:48:05.803519', '2026-06-06 23:48:05.803519') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mTodo Load (1.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*application='TodoList'*/[0m
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 2 /*application='TodoList'*/[0m
+  [1m[36mCategory Destroy (1.0ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = 2 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Load (3.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 3 /*application='TodoList'*/[0m
+  [1m[36mCategory Destroy (0.5ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = 3 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Load (3.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 4 /*application='TodoList'*/[0m
+  [1m[36mCategory Destroy (0.5ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = 4 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Work', '2026-06-06 23:48:44.788096', '2026-06-06 23:48:44.788096') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Home', '2026-06-06 23:48:44.806963', '2026-06-06 23:48:44.806963') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (6.1ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Studies', '2026-06-06 23:48:44.823650', '2026-06-06 23:48:44.823650') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Go to the supermarket', FALSE, 6, '2026-06-06 23:48:44.846784', '2026-06-06 23:48:44.846784') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.6ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Clean my bedroom', FALSE, 6, '2026-06-06 23:48:44.862072', '2026-06-06 23:48:44.862072') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (4.6ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Study for Calculus exam', FALSE, 7, '2026-06-06 23:48:44.877293', '2026-06-06 23:48:44.877293') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (5.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.5ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Finish bank module', TRUE, 5, '2026-06-06 23:48:44.893928', '2026-06-06 23:48:44.893928') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (5.8ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Make power BI dashboard', FALSE, 5, '2026-06-06 23:48:44.908643', '2026-06-06 23:48:44.908643') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  [1m[36mTodo Load (1.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Destroy (3.5ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 2 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Destroy (3.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 3 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Destroy (3.7ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 4 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Destroy (3.2ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 5 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Destroy (3.3ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 6 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Load (3.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 5 /*application='TodoList'*/[0m
+  [1m[36mCategory Destroy (0.8ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = 5 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Load (3.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 6 /*application='TodoList'*/[0m
+  [1m[36mCategory Destroy (0.5ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = 6 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Load (3.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."category_id" = 7 /*application='TodoList'*/[0m
+  [1m[36mCategory Destroy (0.5ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = 7 /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Work', '2026-06-06 23:49:17.849056', '2026-06-06 23:49:17.849056') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (3.5ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Home', '2026-06-06 23:49:17.860930', '2026-06-06 23:49:17.860930') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mCategory Create (4.0ms)[0m  [1m[32mINSERT INTO "categories" ("name", "created_at", "updated_at") VALUES ('Studies', '2026-06-06 23:49:17.874352', '2026-06-06 23:49:17.874352') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (4.5ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Go to the supermarket', FALSE, 9, '2026-06-06 23:49:17.888693', '2026-06-06 23:49:17.888693') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (4.8ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Clean my bedroom', FALSE, 9, '2026-06-06 23:49:17.900781', '2026-06-06 23:49:17.900781') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.6ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Study for Calculus exam', FALSE, 10, '2026-06-06 23:49:17.913592', '2026-06-06 23:49:17.913592') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.1ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Finish bank module', TRUE, 8, '2026-06-06 23:49:17.924661', '2026-06-06 23:49:17.924661') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*application='TodoList'*/[0m
+  [1m[36mTodo Create (3.2ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Make power BI dashboard', FALSE, 8, '2026-06-06 23:49:17.935216', '2026-06-06 23:49:17.935216') RETURNING "id" /*application='TodoList'*/[0m
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*application='TodoList'*/[0m
+Started GET "/" for ::1 at 2026-06-06 21:31:22 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /home/manuelcabral/.local/share/mise/installs/ruby/3.4.8/lib/ruby/gems/3.4.0/gems/railties-8.1.3/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /home/manuelcabral/.local/share/mise/installs/ruby/3.4.8/lib/ruby/gems/3.4.0/gems/railties-8.1.3/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.7ms | GC: 0.0ms)
+Completed 200 OK in 42ms (Views: 11.9ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-06 21:32:06 -0300
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (22.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:5:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:5:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:5:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:5:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:5:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:5:in 'Api::V1::TodosController#index'
+Completed 200 OK in 169ms (Views: 50.9ms | ActiveRecord: 45.8ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-06 21:32:06 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/api/v1/todos" for ::1 at 2026-06-08 22:08:21 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "Crear mi primera tarea desde curl", "completed" => false, "category_id" => 1}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.3) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.3) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.3) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.3) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.3) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.3) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.3) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.3) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.6) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.6) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.6) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.6) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.3) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.3) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+Started POST "/api/v1/todos" for ::1 at 2026-06-08 22:09:19 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "Crear mi primera tarea desde curl", "completed" => false, "category_id" => 1}}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Content in 1ms (ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:321:in 'ActionController::RequestForgeryProtection::ProtectionMethods::Exception#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:415:in 'ActionController::RequestForgeryProtection#handle_unverified_request'
+actionpack (8.1.3) lib/action_controller/metal/request_forgery_protection.rb:404:in 'ActionController::RequestForgeryProtection#verify_authenticity_token'
+activesupport (8.1.3) lib/active_support/callbacks.rb:362:in 'block in ActiveSupport::Callbacks::CallTemplate::MethodCall#make_lambda'
+activesupport (8.1.3) lib/active_support/callbacks.rb:179:in 'block in ActiveSupport::Callbacks::Filters::Before#call'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:36:in 'block (2 levels) in <module:Callbacks>'
+activesupport (8.1.3) lib/active_support/callbacks.rb:180:in 'ActiveSupport::Callbacks::Filters::Before#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'block in ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'Array#each'
+activesupport (8.1.3) lib/active_support/callbacks.rb:560:in 'ActiveSupport::Callbacks::CallbackSequence#invoke_before'
+activesupport (8.1.3) lib/active_support/callbacks.rb:119:in 'block in ActiveSupport::Callbacks#run_callbacks'
+activesupport (8.1.3) lib/active_support/callbacks.rb:141:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/abstract_controller/callbacks.rb:266:in 'AbstractController::Callbacks#process_action'
+actionpack (8.1.3) lib/action_controller/metal/rescue.rb:36:in 'ActionController::Rescue#process_action'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:76:in 'block in ActionController::Instrumentation#process_action'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'block in ActiveSupport::Notifications.instrument'
+activesupport (8.1.3) lib/active_support/notifications/instrumenter.rb:58:in 'ActiveSupport::Notifications::Instrumenter#instrument'
+activesupport (8.1.3) lib/active_support/notifications.rb:210:in 'ActiveSupport::Notifications.instrument'
+actionpack (8.1.3) lib/action_controller/metal/instrumentation.rb:75:in 'ActionController::Instrumentation#process_action'
+actionpack (8.1.3) lib/action_controller/metal/params_wrapper.rb:259:in 'ActionController::ParamsWrapper#process_action'
+activerecord (8.1.3) lib/active_record/railties/controller_runtime.rb:39:in 'ActiveRecord::Railties::ControllerRuntime#process_action'
+actionpack (8.1.3) lib/abstract_controller/base.rb:154:in 'AbstractController::Base#process'
+actionview (8.1.3) lib/action_view/rendering.rb:40:in 'ActionView::Rendering#process'
+actionpack (8.1.3) lib/action_controller/metal.rb:252:in 'ActionController::Metal#dispatch'
+actionpack (8.1.3) lib/action_controller/metal.rb:335:in 'ActionController::Metal.dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:65:in 'ActionDispatch::Routing::RouteSet::Dispatcher#dispatch'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:50:in 'ActionDispatch::Routing::RouteSet::Dispatcher#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:35:in 'block in ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:86:in 'block in ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'Array#each'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:66:in 'ActionDispatch::Journey::Router#recognize'
+actionpack (8.1.3) lib/action_dispatch/journey/router.rb:31:in 'ActionDispatch::Journey::Router#serve'
+actionpack (8.1.3) lib/action_dispatch/routing/route_set.rb:906:in 'ActionDispatch::Routing::RouteSet#call'
+railties (8.1.3) lib/rails/engine/lazy_route_set.rb:60:in 'Rails::Engine::LazyRouteSet#call'
+rack (3.2.6) lib/rack/tempfile_reaper.rb:20:in 'Rack::TempfileReaper#call'
+rack (3.2.6) lib/rack/etag.rb:29:in 'Rack::ETag#call'
+rack (3.2.6) lib/rack/conditional_get.rb:44:in 'Rack::ConditionalGet#call'
+rack (3.2.6) lib/rack/head.rb:15:in 'Rack::Head#call'
+actionpack (8.1.3) lib/action_dispatch/http/content_security_policy.rb:38:in 'ActionDispatch::ContentSecurityPolicy::Middleware#call'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:274:in 'Rack::Session::Abstract::Persisted#context'
+rack-session (2.1.2) lib/rack/session/abstract/id.rb:268:in 'Rack::Session::Abstract::Persisted#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/cookies.rb:708:in 'ActionDispatch::Cookies#call'
+activerecord (8.1.3) lib/active_record/migration.rb:671:in 'ActiveRecord::Migration::CheckPending#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:31:in 'block in ActionDispatch::Callbacks#call'
+activesupport (8.1.3) lib/active_support/callbacks.rb:101:in 'ActiveSupport::Callbacks#run_callbacks'
+actionpack (8.1.3) lib/action_dispatch/middleware/callbacks.rb:30:in 'ActionDispatch::Callbacks#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+Started POST "/api/v1/todos" for ::1 at 2026-06-08 22:14:00 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "Crear mi primera tarea desde curl", "completed" => false, "category_id" => 1}}
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 1 LIMIT 1 /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+Completed 422 Unprocessable Content in 74ms (Views: 0.4ms | ActiveRecord: 22.6ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-08 22:14:49 -0300
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (1.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 29ms (Views: 24.1ms | ActiveRecord: 3.8ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2026-06-08 22:14:49 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+Started POST "/api/v1/todos" for ::1 at 2026-06-08 22:15:04 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "Crear mi primera tarea desde curl", "completed" => false, "category_id" => 9}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mCategory Load (3.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mTodo Create (50.3ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('Crear mi primera tarea desde curl', FALSE, 9, '2026-06-09 01:15:04.920192', '2026-06-09 01:15:04.920192') RETURNING "id" /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mTRANSACTION (1.4ms)[0m  [1m[35mCOMMIT /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+Completed 201 Created in 67ms (Views: 0.7ms | ActiveRecord: 55.4ms (2 queries, 0 cached) | GC: 1.1ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-08 22:15:10 -0300
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 27ms (Views: 22.9ms | ActiveRecord: 2.8ms (7 queries, 3 cached) | GC: 2.8ms)
+
+
+Started POST "/api/v1/todos/7" for ::1 at 2026-06-08 22:24:15 -0300
+  
+ActionController::RoutingError (No route matches [POST] "/api/v1/todos/7"):
+  
+Started GET "/api/v1/todos/7" for ::1 at 2026-06-08 22:24:26 -0300
+  
+ActionController::RoutingError (No route matches [GET] "/api/v1/todos/7"):
+  
+Started PATCH "/api/v1/todos/7" for ::1 at 2026-06-08 22:25:47 -0300
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/app/controllers/api/v1/todos_controller.rb:36: syntax errors found\n  \e[2m34 | \e[m        params.require(:todo).permit(:title, :completed, :category_id)\n  \e[2m35 | \e[m    end\n\e[1;31m> \e[m\e[2m36 | \e[mend\n  \e[2m   | \e[m   \e[1;31m^\e[m unexpected end-of-input, assuming it is closing the parent top level context\n\e[1;31m> \e[m\e[2m37 | \e[m\n  \e[2m   | \e[m\e[1;31m^\e[m expected an `end` to close the `class` statement\n">)
+Caused by: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/app/controllers/api/v1/todos_controller.rb:36: syntax errors found
+  [2m34 | [m        params.require(:todo).permit(:title, :completed, :category_id)
+  [2m35 | [m    end
+[1;31m> [m[2m36 | [mend
+  [2m   | [m   [1;31m^[m unexpected end-of-input, assuming it is closing the parent top level context
+[1;31m> [m[2m37 | [m
+  [2m   | [m[1;31m^[m expected an `end` to close the `class` statement
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/app/controllers/api/v1/todos_controller.rb:36: syntax errors found\n  \e[2m34 | \e[m        params.require(:todo).permit(:title, :completed, :category_id)\n  \e[2m35 | \e[m    end\n\e[1;31m> \e[m\e[2m36 | \e[mend\n  \e[2m   | \e[m   \e[1;31m^\e[m unexpected end-of-input, assuming it is closing the parent top level context\n\e[1;31m> \e[m\e[2m37 | \e[m\n  \e[2m   | \e[m\e[1;31m^\e[m expected an `end` to close the `class` statement\n">):
+  
+activesupport (8.1.3) lib/active_support/error_reporter.rb:235:in 'ActiveSupport::ErrorReporter#report'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:36:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/app/controllers/api/v1/todos_controller.rb:36: syntax errors found
+  [2m34 | [m        params.require(:todo).permit(:title, :completed, :category_id)
+  [2m35 | [m    end
+[1;31m> [m[2m36 | [mend
+  [2m   | [m   [1;31m^[m unexpected end-of-input, assuming it is closing the parent top level context
+[1;31m> [m[2m37 | [m
+  [2m   | [m[1;31m^[m expected an `end` to close the `class` statement
+):
+  
+app/controllers/api/v1/todos_controller.rb:36: syntax errors found
+Started PATCH "/api/v1/todos/7" for ::1 at 2026-06-08 22:26:11 -0300
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"todo" => {"completed" => true}, "id" => "7"}
+  [1m[36mTodo Load (13.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 7 LIMIT 1 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:23:in 'Api::V1::TodosController#update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mTodo Update (3.1ms)[0m  [1m[33mUPDATE "todos" SET "completed" = TRUE, "updated_at" = '2026-06-09 01:26:11.331238' WHERE "todos"."id" = 7 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in 'Api::V1::TodosController#update'
+Completed 200 OK in 43ms (Views: 8.4ms | ActiveRecord: 24.7ms (3 queries, 0 cached) | GC: 6.1ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-08 22:26:15 -0300
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 24ms (Views: 19.4ms | ActiveRecord: 3.0ms (7 queries, 3 cached) | GC: 1.0ms)
+
+
+Started DELETE "/api/v1/todos/8" for ::1 at 2026-06-08 22:28:57 -0300
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id" => "8"}
+  [1m[36mTodo Load (0.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 8 LIMIT 1 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTodo Destroy (1.7ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 8 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (1.5ms)[0m  [1m[35mCOMMIT /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+Completed 204 No Content in 21ms (ActiveRecord: 9.3ms (2 queries, 0 cached) | GC: 0.2ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-08 22:29:01 -0300
+Processing by Api::V1::TodosController#index as HTML
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 32ms (Views: 24.1ms | ActiveRecord: 6.3ms (6 queries, 2 cached) | GC: 1.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-09 23:29:38 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (21.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 145ms (Views: 48.9ms | ActiveRecord: 50.3ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-09 23:29:38 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 30ms (Views: 26.0ms | ActiveRecord: 2.9ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-10 21:33:58 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (22.3ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 138ms (Views: 47.4ms | ActiveRecord: 49.9ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-10 21:33:58 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (1.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 25ms (Views: 20.4ms | ActiveRecord: 2.6ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-10 21:44:27 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (22.4ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 134ms (Views: 51.5ms | ActiveRecord: 43.9ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-10 21:44:27 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 31ms (Views: 26.0ms | ActiveRecord: 2.8ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
