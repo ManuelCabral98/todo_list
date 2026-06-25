@@ -85,7 +85,7 @@ function App() {
       outline: 'none',
       backgroundColor: '#f1f5f9',
       transition: 'all 0.2s ease',
-      color: '000000',
+      color: '#000000',
     },
     button: {
       backgroundColor: '#2563eb',
