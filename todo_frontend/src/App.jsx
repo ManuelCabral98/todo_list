@@ -157,8 +157,8 @@ function App() {
             style={styles.input}
           />
           <button type="submit" style={styles.button}>Add Task</button>
-
-          <section>
+        </form>
+        <section>
             {todos.length === 0 ? (
               <p style={{textAlign: 'center', color: '#94a3b8'}}>No tasks found.</p>
             ) : (
@@ -174,6 +174,7 @@ function App() {
                         readOnly
                         style={styles.checkbox}
                       />
+                      <span style={styles.todoText}>{todo.title}</span>
                     </div>
 
                     {/* right container: category badge */}
@@ -188,8 +189,6 @@ function App() {
               </ul>
             )}
           </section>
-
-        </form>
       </main>
     </div>
   )
