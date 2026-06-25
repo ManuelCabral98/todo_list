@@ -4,6 +4,7 @@ function App() {
   const [todos, setTodos] = useState([])
   const [newTodoTitle, setNewTodoTitle] = useState("")
 
+  // fetch data from rails API 
   useEffect(() => {
     fetch("http://localhost:3000/api/v1/todos").then(response => response.json()).then(data => {
       console.log("Datos recibidos de Rails: ", data)
@@ -12,6 +13,7 @@ function App() {
     .catch(error => console.error("Error conectando con Rails:", error))
   }, [])
 
+  // handle new todo submission
   const handleSubmit = (e) => {
     e.preventDefault()
     if (newTodoTitle.trim() === "") return
@@ -38,9 +40,157 @@ function App() {
     .catch(error => console.error("Error creating task: ", error))
   }
 
+  // UI styles
+  const styles = {
+    appContainer: {
+      backgroundColor: '#f8fafc',
+      minHeight: '100vh',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'flex-start',
+      padding: '40px 20px',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+      color: '#334155'
+    },
+    card: {
+      backgroundColor: '#ffffff',
+      width: '100%',
+      maxWidth: '480px',
+      borderRadius: '16px',
+      boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+      padding: '32px'
+    },
+    title: {
+      fontSize: '24px',
+      fontWeight: '700',
+      marginBottom: '6px',
+      color: '#0f172a'
+    },
+    subtitle: {
+      fontSize: '14px',
+      color: '#64748b',
+      marginBottom: '24px'
+    },
+    form: {
+      display: 'flex',
+      gap: '12px',
+      marginBottom: '24px'
+    },
+    input: {
+      flex: 1,
+      padding: '12px 16px',
+      fontSize: '15px',
+      borderRadius: '8px',
+      border: '1px solid #cbd5e1',
+      outline: 'none',
+      backgroundColor: '#f1f5f9',
+      transition: 'all 0.2s ease',
+      color: '000000',
+    },
+    button: {
+      backgroundColor: '#2563eb',
+      color: '#ffffff',
+      padding: '12px 20px',
+      fontSize: '15px',
+      fontWeight: '600',
+      borderRadius: '8px',
+      border: 'none',
+      cursor: 'pointer',
+      transition: 'background-color 0.2s ease'
+    },
+    todoList: {
+      listStyleType: 'none',
+      padding: 0,
+      margin: 0
+    },
+    todoItem: {
+      display: 'flex',
+      alignItems: 'center',
+      padding: '14px 16px',
+      backgroundColor: '#ffffff',
+      borderRadius: '8px',
+      marginBottom: '10px',
+      border: '1px solid #e2e8f0',
+      justifyContent: 'space-between'
+    },
+    todoItemLeft: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '12px'
+    },
+    checkbox: {
+      width: '18px',
+      height: '18px',
+      cursor: 'pointer',
+      accentColor: '#2563eb'
+    },
+    todoText: {
+      fontSize: '16px',
+      fontWeight: '500',
+      color: '#334155'
+    },
+    badge: {
+      fontSize: '12px',
+      fontWeight: '600',
+      backgroundColor: '#e0f2fe',
+      color: '#0369a1',
+      padding: '4px 8px',
+      borderRadius: '6px',
+      textTransform: 'uppercase',
+      letterSpacing: '0.5px'
+    }
+  }
+
   return (
-    <div>
-      <h1>My TO-DO List - Frontend</h1>
+    <div style={styles.appContainer}>
+      <main style={styles.card}>
+        <header>
+          <h1 style={styles.title}>Task Manager</h1>
+          <p style={styles.subtitle}>FullStack Project (React and Rails)</p>
+        </header>
+        <form onSubmit={handleSubmit} style={styles.form}>
+          <input
+            type="text"
+            placeholder="write a new task..."
+            value={newTodoTitle}
+            onChange={(e) => setNewTodoTitle(e.target.value)}
+            style={styles.input}
+          />
+          <button type="submit" style={styles.button}>Add Task</button>
+
+          <section>
+            {todos.length === 0 ? (
+              <p style={{textAlign: 'center', color: '#94a3b8'}}>No tasks found.</p>
+            ) : (
+              <ul style={styles.todoList}>
+                {todos.map (todo => (
+                  <li key={todo.id} style={styles.todoItem}>
+                    
+                    {/* left container: checkbox + title */}
+                    <div style={styles.todoItemLeft}>
+                      <input 
+                        type='checkbox'
+                        checked={todo.completed}
+                        readOnly
+                        style={styles.checkbox}
+                      />
+                    </div>
+
+                    {/* right container: category badge */}
+                    {todo.category && (
+                      <span style={styles.badge}>
+                        {todo.category.name}
+                      </span>
+                    )}
+
+                  </li>
+                ))}
+              </ul>
+            )}
+          </section>
+
+        </form>
+      </main>
     </div>
   )
 }
