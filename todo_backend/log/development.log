@@ -887,3 +887,38 @@ Processing by Api::V1::TodosController#index as */*
 Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.8ms (6 queries, 2 cached) | GC: 0.0ms)
 
 
+Started GET "/api/v1/todos" for ::1 at 2026-06-24 22:56:22 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (24.1ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 139ms (Views: 39.9ms | ActiveRecord: 53.9ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-24 22:56:22 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 27ms (Views: 23.7ms | ActiveRecord: 2.5ms (6 queries, 2 cached) | GC: 0.0ms)
+
+

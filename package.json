@@ -1,0 +1,17 @@
+{
+  "name": "todo_list",
+  "version": "1.0.0",
+  "description": "> This project has been **developed** with the goal of **deeply understanding Ruby on Rails fundamentals**, looking toward **developing my personal web portfolio** in this framework.",
+  "main": "index.js",
+  "scripts": {
+    "start:backend": "cd todo_backend && bin/rails server",
+    "start:frontend": "cd todo_frontend && npm run dev",
+    "dev": "concurrently -n \"Rails,React\" -c \"red,blue\" \"npm run start:backend\" \"npm run start:frontend\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.3"
+  }
+}
