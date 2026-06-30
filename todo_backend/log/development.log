@@ -1159,3 +1159,453 @@ Processing by Api::V1::TodosController#update as */*
 Completed 200 OK in 28ms (Views: 4.2ms | ActiveRecord: 12.5ms (3 queries, 0 cached) | GC: 0.0ms)
 
 
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 11:43:27 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (24.5ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 62ms (Views: 22.8ms | ActiveRecord: 37.1ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 11:43:27 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 9 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 10 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 29ms (Views: 24.1ms | ActiveRecord: 3.1ms (6 queries, 2 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/todos/12" for ::1 at 2026-06-30 11:55:39 -0300
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id" => "12"}
+  [1m[36mTodo Load (22.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 12 LIMIT 1 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTodo Destroy (2.8ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 12 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (11.9ms)[0m  [1m[35mCOMMIT /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+Completed 204 No Content in 47ms (ActiveRecord: 46.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/todos/12" for ::1 at 2026-06-30 11:55:41 -0300
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id" => "12"}
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 12 LIMIT 1 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Todo with 'id'="12"):
+  
+app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+Started DELETE "/api/v1/todos/12" for ::1 at 2026-06-30 11:57:18 -0300
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id" => "12"}
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 12 LIMIT 1 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+Completed 404 Not Found in 5ms (ActiveRecord: 0.8ms (1 query, 0 cached) | GC: 0.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Todo with 'id'="12"):
+  
+app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+Started DELETE "/api/v1/todos/7" for ::1 at 2026-06-30 11:57:37 -0300
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id" => "7"}
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 7 LIMIT 1 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTodo Destroy (3.6ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 7 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (50.2ms)[0m  [1m[35mCOMMIT /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+Completed 204 No Content in 63ms (ActiveRecord: 54.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/todos/9" for ::1 at 2026-06-30 11:57:38 -0300
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id" => "9"}
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 9 LIMIT 1 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTodo Destroy (3.8ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 9 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (5.7ms)[0m  [1m[35mCOMMIT /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+Completed 204 No Content in 18ms (ActiveRecord: 10.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:01:23 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 14ms (Views: 10.8ms | ActiveRecord: 2.0ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:01:23 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 14ms (Views: 11.0ms | ActiveRecord: 1.3ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/todos/10" for ::1 at 2026-06-30 12:04:25 -0300
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">)
+Caused by: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">):
+  
+activesupport (8.1.3) lib/active_support/error_reporter.rb:235:in 'ActiveSupport::ErrorReporter#report'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:36:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+):
+  
+app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:04:28 -0300
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">)
+Caused by: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">):
+  
+activesupport (8.1.3) lib/active_support/error_reporter.rb:235:in 'ActiveSupport::ErrorReporter#report'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:36:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+):
+  
+app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:04:28 -0300
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">)
+Caused by: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">):
+  
+activesupport (8.1.3) lib/active_support/error_reporter.rb:235:in 'ActiveSupport::ErrorReporter#report'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:36:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+):
+  
+app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+Started POST "/api/v1/todos" for ::1 at 2026-06-30 12:05:01 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+  
+ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">)
+Caused by: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+)
+
+Information for: ArgumentError (Reported error must be an Exception, got: #<SyntaxError:"/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found\n  45 |         params.require(:todo).permit(:title, :completed, :category_id)\n  46 |     end\n> 47 | end\n     |    ^ unexpected end-of-input, assuming it is closing the parent top level context\n> 48 | \n     | ^ expected an `end` to close the `class` statement\n">):
+  
+activesupport (8.1.3) lib/active_support/error_reporter.rb:235:in 'ActiveSupport::ErrorReporter#report'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:36:in 'ActionDispatch::Executor#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in 'ActionDispatch::ActionableExceptions#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/debug_exceptions.rb:31:in 'ActionDispatch::DebugExceptions#call'
+web-console (4.3.0) lib/web_console/middleware.rb:132:in 'WebConsole::Middleware#call_app'
+web-console (4.3.0) lib/web_console/middleware.rb:28:in 'block in WebConsole::Middleware#call'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'Kernel#catch'
+web-console (4.3.0) lib/web_console/middleware.rb:17:in 'WebConsole::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/show_exceptions.rb:32:in 'ActionDispatch::ShowExceptions#call'
+railties (8.1.3) lib/rails/rack/logger.rb:41:in 'Rails::Rack::Logger#call_app'
+railties (8.1.3) lib/rails/rack/logger.rb:29:in 'Rails::Rack::Logger#call'
+propshaft (1.3.2) lib/propshaft/quiet_assets.rb:11:in 'Propshaft::QuietAssets#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/remote_ip.rb:98:in 'ActionDispatch::RemoteIp#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/request_id.rb:34:in 'ActionDispatch::RequestId#call'
+rack (3.2.6) lib/rack/method_override.rb:28:in 'Rack::MethodOverride#call'
+rack (3.2.6) lib/rack/runtime.rb:24:in 'Rack::Runtime#call'
+activesupport (8.1.3) lib/active_support/cache/strategy/local_cache_middleware.rb:30:in 'ActiveSupport::Cache::Strategy::LocalCache::Middleware#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:61:in 'block in ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:26:in 'ActionDispatch::ServerTiming::Subscriber#collect_events'
+actionpack (8.1.3) lib/action_dispatch/middleware/server_timing.rb:60:in 'ActionDispatch::ServerTiming#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/executor.rb:20:in 'ActionDispatch::Executor#call'
+propshaft (1.3.2) lib/propshaft/server.rb:37:in 'Propshaft::Server#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/static.rb:27:in 'ActionDispatch::Static#call'
+rack (3.2.6) lib/rack/sendfile.rb:131:in 'Rack::Sendfile#call'
+actionpack (8.1.3) lib/action_dispatch/middleware/host_authorization.rb:143:in 'ActionDispatch::HostAuthorization#call'
+rack-cors (3.0.0) lib/rack/cors.rb:102:in 'Rack::Cors#call'
+railties (8.1.3) lib/rails/engine.rb:534:in 'Rails::Engine#call'
+puma (8.0.2) lib/puma/configuration.rb:305:in 'Puma::Configuration::ConfigMiddleware#call'
+puma (8.0.2) lib/puma/response.rb:79:in 'block in Puma::Response#handle_request'
+puma (8.0.2) lib/puma/thread_pool.rb:434:in 'Puma::ThreadPool#with_force_shutdown'
+puma (8.0.2) lib/puma/response.rb:78:in 'Puma::Response#handle_request'
+puma (8.0.2) lib/puma/server.rb:508:in 'Puma::Server#process_client'
+puma (8.0.2) lib/puma/server.rb:263:in 'block in Puma::Server#run'
+puma (8.0.2) lib/puma/thread_pool.rb:246:in 'block in Puma::ThreadPool#spawn_thread'
+
+Information for cause: SyntaxError (/home/manuelcabral/Escritorio/Personal Projects/todo_list/todo_backend/app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+  45 |         params.require(:todo).permit(:title, :completed, :category_id)
+  46 |     end
+> 47 | end
+     |    ^ unexpected end-of-input, assuming it is closing the parent top level context
+> 48 | 
+     | ^ expected an `end` to close the `class` statement
+):
+  
+app/controllers/api/v1/todos_controller.rb:47: syntax errors found
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:05:32 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (21.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 121ms (Views: 38.7ms | ActiveRecord: 42.0ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:05:32 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCACHE Category Load (0.0ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 15ms (Views: 11.5ms | ActiveRecord: 1.4ms (3 queries, 1 cached) | GC: 0.0ms)
+
+
+Started DELETE "/api/v1/todos/10" for ::1 at 2026-06-30 12:05:34 -0300
+Processing by Api::V1::TodosController#destroy as */*
+  Parameters: {"id" => "10"}
+  [1m[36mTodo Load (1.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 10 LIMIT 1 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:34:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTodo Destroy (3.0ms)[0m  [1m[31mDELETE FROM "todos" WHERE "todos"."id" = 10 /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT /*action='destroy',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:35:in 'Api::V1::TodosController#destroy'
+Completed 200 OK in 22ms (Views: 0.4ms | ActiveRecord: 10.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2026-06-30 12:07:27 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "trying new feats", "completed" => false}}
+Completed 422 Unprocessable Content in 8ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:07:30 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 17ms (Views: 13.0ms | ActiveRecord: 2.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:07:30 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 16ms (Views: 12.3ms | ActiveRecord: 2.1ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2026-06-30 12:07:42 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "is not working", "completed" => false}}
+Completed 422 Unprocessable Content in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2026-06-30 12:07:45 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "hola", "completed" => false}}
+Completed 422 Unprocessable Content in 4ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:07:54 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.8ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 18ms (Views: 13.5ms | ActiveRecord: 1.8ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:07:54 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (1.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 16ms (Views: 11.8ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.0ms)
+
+

@@ -64,6 +64,20 @@ function App() {
     .catch(error => console.error("Error updating checkbox value: ", error))
   }
 
+  //handle delete action
+  const handleDelete = (e, todo) => {
+    e.preventDefault()
+
+    fetch(`http://localhost:3000/api/v1/todos/${todo.id}`, {
+      method: "DELETE"
+    })
+    .then(response => response.json())
+    .then(deletedTodo => {
+      setTodos(todos.filter(t => t.id !== deletedTodo.id))
+    })
+    .catch(error => console.error("Error deleting value: ", error))
+  }
+
   // UI styles
   const styles = {
     appContainer: {
@@ -142,6 +156,20 @@ function App() {
       alignItems: 'center',
       gap: '12px'
     },
+    todoItemRight: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '15px'
+    },
+    deleteButton: {
+      background: 'red',
+      borderRadius: '25%',
+      borderColor: 'red',
+      fontSize: '12px',
+      fontWeight: '600',
+      cursor: 'pointer',
+      opacity: 0.7,
+    },
     checkbox: {
       width: '18px',
       height: '18px',
@@ -201,12 +229,15 @@ function App() {
                       <span style={styles.todoText}>{todo.title}</span>
                     </div>
 
-                    {/* right container: category badge */}
-                    {todo.category && (
-                      <span style={styles.badge}>
-                        {todo.category.name}
-                      </span>
-                    )}
+                    {/* right container: category badge + delete button*/}
+                    <div style={styles.todoItemRight}>
+                      {todo.category && (
+                        <span style={styles.badge}>
+                          {todo.category.name}
+                        </span>
+                      )}
+                      <button onClick={(e) => handleDelete(e, todo)} style={styles.deleteButton}> X </button>
+                    </div>
 
                   </li>
                 ))}

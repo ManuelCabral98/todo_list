@@ -33,7 +33,11 @@ class Api::V1::TodosController < ApplicationController
     def destroy
         @todo = Todo.find(params[:id])
         @todo.destroy
-        head :no_content # returns 204 state without text
+        if @todo.destroy
+            render json: { id: @todo.id, message: "Eliminado con éxito!" }, status: :ok
+        else    
+            render json: { errors: @todo.errors.full_messages }, status: :unprocessable_entity
+        end
     end
 
     # strong parameters for security. This avoids external injection into the database
