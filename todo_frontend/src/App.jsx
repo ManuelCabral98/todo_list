@@ -21,7 +21,8 @@ function App() {
     const bodyData ={
       todo: {
         title: newTodoTitle,
-        completed: false
+        completed: false,
+        category_id: 8, //temporal fix for allow creating new tasks
       }
     }
 
@@ -32,7 +33,14 @@ function App() {
       },
       body: JSON.stringify(bodyData)
     })
-    .then(response => response.json())
+    .then(response => {
+      // Si la respuesta NO es exitosa (ej: 422, 500, 400)
+      if (!response.ok) {
+        // Lanzamos el JSON de error hacia el .catch()
+        return response.json().then(err => { throw err });
+      }
+      return response.json();
+    })
     .then(newTodoCreated => { 
       setTodos([...todos, newTodoCreated]) 
       setNewTodoTitle("")

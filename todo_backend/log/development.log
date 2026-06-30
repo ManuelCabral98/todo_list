@@ -1609,3 +1609,68 @@ Processing by Api::V1::TodosController#index as */*
 Completed 200 OK in 16ms (Views: 11.8ms | ActiveRecord: 1.7ms (2 queries, 0 cached) | GC: 0.0ms)
 
 
+Started POST "/api/v1/todos" for ::1 at 2026-06-30 12:11:58 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "prueba", "completed" => false}}
+Completed 422 Unprocessable Content in 4ms (Views: 0.2ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:17:21 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (20.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 108ms (Views: 33.3ms | ActiveRecord: 40.6ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:17:21 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.7ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 11ms (Views: 8.4ms | ActiveRecord: 1.4ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2026-06-30 12:17:25 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "prueba", "completed" => false}}
+Completed 422 Unprocessable Content in 8ms (Views: 0.3ms | ActiveRecord: 0.0ms (0 queries, 0 cached) | GC: 0.0ms)
+
+
+  [1m[36mCategory Load (30.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" /* loading for pp */ LIMIT 11 /*application='TodoList'*/[0m
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:21:28 -0300
+  [1m[36mActiveRecord::SchemaMigration Load (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC /*application='TodoList'*/[0m
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (19.2ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 104ms (Views: 31.1ms | ActiveRecord: 36.9ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started GET "/api/v1/todos" for ::1 at 2026-06-30 12:21:28 -0300
+Processing by Api::V1::TodosController#index as */*
+  [1m[36mTodo Load (0.6ms)[0m  [1m[34mSELECT "todos".* FROM "todos" /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='index',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:7:in 'Api::V1::TodosController#index'
+Completed 200 OK in 10ms (Views: 7.2ms | ActiveRecord: 1.3ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
+Started POST "/api/v1/todos" for ::1 at 2026-06-30 12:21:33 -0300
+Processing by Api::V1::TodosController#create as */*
+  Parameters: {"todo" => {"title" => "test", "completed" => false, "category_id" => 8}}
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mCategory Load (4.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mTodo Create (7.5ms)[0m  [1m[32mINSERT INTO "todos" ("title", "completed", "category_id", "created_at", "updated_at") VALUES ('test', FALSE, 8, '2026-06-30 15:21:33.431737', '2026-06-30 15:21:33.431737') RETURNING "id" /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+  [1m[36mTRANSACTION (2.0ms)[0m  [1m[35mCOMMIT /*action='create',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:14:in 'Api::V1::TodosController#create'
+Completed 201 Created in 29ms (Views: 0.9ms | ActiveRecord: 14.2ms (2 queries, 0 cached) | GC: 0.0ms)
+
+
