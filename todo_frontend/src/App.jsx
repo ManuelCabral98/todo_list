@@ -40,6 +40,30 @@ function App() {
     .catch(error => console.error("Error creating task: ", error))
   }
 
+  // handle click on checkbox
+  const handleToggle = (e, todo) => {
+    e.preventDefault()
+
+    const toggleValue = {
+      todo: {
+        completed: !todo.completed
+      }
+    }
+
+    fetch(`http://localhost:3000/api/v1/todos/${todo.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(toggleValue)
+    })
+    .then(response => response.json())
+    .then(checkboxUpdate => {
+      setTodos(todos.map(t => t.id === checkboxUpdate.id ? checkboxUpdate : t))
+    })
+    .catch(error => console.error("Error updating checkbox value: ", error))
+  }
+
   // UI styles
   const styles = {
     appContainer: {
@@ -171,7 +195,7 @@ function App() {
                       <input 
                         type='checkbox'
                         checked={todo.completed}
-                        readOnly
+                        onChange={(e) => handleToggle(e, todo)}
                         style={styles.checkbox}
                       />
                       <span style={styles.todoText}>{todo.title}</span>
