@@ -1937,3 +1937,35 @@ Processing by Api::V1::TodosController#create as */*
 Completed 201 Created in 22ms (Views: 1.0ms | ActiveRecord: 7.7ms (2 queries, 0 cached) | GC: 1.3ms)
 
 
+Started PATCH "/api/v1/todos/13" for ::1 at 2026-07-01 22:42:31 -0300
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"todo" => {"completed" => true}, "id" => "13"}
+  [1m[36mTodo Load (1.0ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 13 LIMIT 1 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:23:in 'Api::V1::TodosController#update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mTodo Update (51.9ms)[0m  [1m[33mUPDATE "todos" SET "completed" = TRUE, "updated_at" = '2026-07-02 01:42:31.837294' WHERE "todos"."id" = 13 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in 'Api::V1::TodosController#update'
+Completed 200 OK in 74ms (Views: 4.6ms | ActiveRecord: 55.6ms (3 queries, 0 cached) | GC: 1.8ms)
+
+
+Started PATCH "/api/v1/todos/13" for ::1 at 2026-07-01 22:42:33 -0300
+Processing by Api::V1::TodosController#update as */*
+  Parameters: {"todo" => {"completed" => false}, "id" => "13"}
+  [1m[36mTodo Load (0.9ms)[0m  [1m[34mSELECT "todos".* FROM "todos" WHERE "todos"."id" = 13 LIMIT 1 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:23:in 'Api::V1::TodosController#update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mTodo Update (3.2ms)[0m  [1m[33mUPDATE "todos" SET "completed" = FALSE, "updated_at" = '2026-07-02 01:42:33.290572' WHERE "todos"."id" = 13 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mTRANSACTION (5.9ms)[0m  [1m[35mCOMMIT /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:25:in 'Api::V1::TodosController#update'
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" = 8 LIMIT 1 /*action='update',application='TodoList',controller='todos'*/[0m
+  ↳ app/controllers/api/v1/todos_controller.rb:26:in 'Api::V1::TodosController#update'
+Completed 200 OK in 27ms (Views: 4.6ms | ActiveRecord: 10.8ms (3 queries, 0 cached) | GC: 1.2ms)
+
+
