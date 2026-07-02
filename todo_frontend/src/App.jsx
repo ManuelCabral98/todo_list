@@ -2,7 +2,9 @@ import { useState,useEffect } from 'react'
 
 function App() {
   const [todos, setTodos] = useState([])
+  const [categories, setCategories] = useState([])
   const [newTodoTitle, setNewTodoTitle] = useState("")
+  const [selectedCategory, setSelectedCategory] = useState("")
 
   // fetch data from rails API 
   useEffect(() => {
@@ -10,8 +12,18 @@ function App() {
       console.log("Datos recibidos de Rails: ", data)
       setTodos(data)
     })
-    .catch(error => console.error("Error conectando con Rails:", error))
+    .catch(error => console.error("Error fetching todos from Rails:", error))
   }, [])
+
+  // fetch categories
+  useEffect(() => {
+    fetch("http://localhost:3000/api/v1/categories")
+    .then(rawCategories => rawCategories.json())
+    .then(categoriesData => {
+      setCategories(categoriesData)
+    })
+    .catch(error => console.error("Error fetching categories from Rails:", error))
+  }, []) // ensure running this useEffect just once
 
   // handle new todo submission
   const handleSubmit = (e) => {
@@ -22,7 +34,7 @@ function App() {
       todo: {
         title: newTodoTitle,
         completed: false,
-        category_id: 8, //temporal fix for allow creating new tasks
+        category_id: selectedCategory
       }
     }
 
@@ -216,6 +228,16 @@ function App() {
             onChange={(e) => setNewTodoTitle(e.target.value)}
             style={styles.input}
           />
+          <select
+            value={selectedCategory}
+            onChange={(e) => setSelectedCategory(Number(e.target.value))}
+          >
+            {categories.map(cat => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
           <button type="submit" style={styles.button}>Add Task</button>
         </form>
         <section>
