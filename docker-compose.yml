@@ -1,0 +1,50 @@
+version: 3.8
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: todo_db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: todo_prod
+    volumes:
+      - todo_data:/var/lib/postgresql/data
+    networks:
+      - backend
+    restart: unless-stopped
+
+  backend:
+    build: ./todo_backend
+    container_name: todo_backend
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: postgres
+      TODO_LIST_DATABASE_PASSWORD: admin
+    depends_on: 
+      - db
+    networks:
+      - backend
+      - frontend
+    restart: unless-stopped
+  
+  frontend:
+    build: ./todo_frontend
+    container_name: todo_frontend
+    ports:
+      - "5173:5173"
+    networks:
+      - frontend
+    restart: unless-stopped
+
+volumes:
+  todo_data:
+
+networks:
+  backend:
+  frontend:
+    
