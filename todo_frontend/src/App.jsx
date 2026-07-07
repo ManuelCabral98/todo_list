@@ -8,7 +8,7 @@ function App() {
 
   // fetch data from rails API 
   useEffect(() => {
-    fetch("http://localhost:3000/api/v1/todos").then(response => response.json()).then(data => {
+    fetch(`${import.meta.env.VITE_API_URL}/todos`).then(response => response.json()).then(data => {
       console.log("Datos recibidos de Rails: ", data)
       setTodos(data)
     })
@@ -17,7 +17,7 @@ function App() {
 
   // fetch categories
   useEffect(() => {
-    fetch("http://localhost:3000/api/v1/categories")
+    fetch(`${import.meta.env.VITE_API_URL}/categories`)
     .then(rawCategories => rawCategories.json())
     .then(categoriesData => {
       setCategories(categoriesData)
@@ -38,7 +38,7 @@ function App() {
       }
     }
 
-    fetch("http://localhost:3000/api/v1/todos", {
+    fetch(`${import.meta.env.VITE_API_URL}/todos`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -70,7 +70,7 @@ function App() {
       }
     }
 
-    fetch(`http://localhost:3000/api/v1/todos/${todo.id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/todos/${todo.id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json"
@@ -88,7 +88,7 @@ function App() {
   const handleDelete = (e, todo) => {
     e.preventDefault()
 
-    fetch(`http://localhost:3000/api/v1/todos/${todo.id}`, {
+    fetch(`${import.meta.env.VITE_API_URL}/todos/${todo.id}`, {
       method: "DELETE"
     })
     .then(response => response.json())

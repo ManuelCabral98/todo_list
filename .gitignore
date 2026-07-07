@@ -38,6 +38,7 @@ todo_backend/config/master.key
 # FRONTEND: VITE & REACT CONFIGURATION (todo_frontend/)
 
 todo_frontend/node_modules/
+node_modules/
 
 # Ignore local production build outputs
 todo_frontend/dist/
@@ -58,3 +59,6 @@ todo_frontend/.env.test.local
 
 # Ignore TypeScript declaration caches (if applicable in the future)
 todo_frontend/.typescript-declarations/
+
+# Ignore .env files
+.env

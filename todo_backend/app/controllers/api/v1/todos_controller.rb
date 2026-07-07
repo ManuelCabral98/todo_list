@@ -32,7 +32,6 @@ class Api::V1::TodosController < ApplicationController
     # DELETE method
     def destroy
         @todo = Todo.find(params[:id])
-        @todo.destroy
         if @todo.destroy
             render json: { id: @todo.id, message: "Eliminado con éxito!" }, status: :ok
         else    

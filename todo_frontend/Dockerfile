@@ -10,6 +10,10 @@ RUN npm ci
 
 # copy the whole code inside of Docker container and build
 COPY . .
+# ARG + ENV
+ARG VITE_API_URL
+ENV VITE_API_URL=$VITE_API_URL
+
 RUN npm run build
 
 # Stage 2: Production
