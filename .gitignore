@@ -62,3 +62,6 @@ todo_frontend/.typescript-declarations/
 
 # Ignore .env files
 .env
+
+# Ignore .claude directory
+.claude
