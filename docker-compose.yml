@@ -38,6 +38,8 @@ services:
     container_name: todo_frontend
     ports:
       - "${FRONTEND_PORT_HOST}:80"
+    depends_on:
+      - backend
     networks:
       - frontend
     restart: unless-stopped
